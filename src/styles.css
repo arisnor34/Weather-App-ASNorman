@@ -169,3 +169,8 @@ h1 {
   font-style: italic;
   padding-left: 35px;
 }
+.github-link {
+  position: relative;
+  left: 50px;
+  top: 15px;
+}
