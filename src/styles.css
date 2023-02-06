@@ -1,0 +1,171 @@
+.search-field {
+  box-sizing: border-box;
+  font-family: "Fjalla One", sans-serif;
+}
+.container {
+  width: 50px;
+  display: flex;
+  justify-content: center;
+}
+.weather-app-wrap {
+  padding: 6px;
+  background-color: black;
+  max-width: fit-content;
+  position: flex;
+  align-items: center;
+  justify-content: center;
+}
+.weather-app {
+  width: 700px;
+  min-height: 200px;
+  padding: 25px;
+  background: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-bar {
+  width: 80%;
+  background-color: rgba(255, 255, 255, 0.36);
+  display: flex;
+  align-items: center;
+  position: relative;
+  left: 80px;
+  border-radius: 60px;
+  padding: 5px 10px;
+  backdrop-filter: blur(4px) saturate(180%);
+}
+
+.search-bar input {
+  background: transparent;
+  border: 0;
+  outline: none;
+  padding: 25px 10px;
+  width: 700px;
+  font-size: 20px;
+  color: #757481;
+}
+::placeholder {
+  color: #757481;
+}
+
+.search-bar button i {
+  width: 45px;
+  padding-right: 10px;
+}
+
+.search-bar button {
+  border: 0;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  padding-right: 0.5px;
+  background: rgba(255, 255, 255, 0.5);
+  border-color: transparent;
+  cursor: pointer;
+}
+
+.btnSubmit i {
+  width: 45px;
+  padding-right: 10px;
+}
+
+.btnSubmit {
+  border: 0;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  padding-right: 0.5px;
+  background: rgba(255, 255, 255, 0.5);
+  border-color: transparent;
+  cursor: pointer;
+}
+
+.current {
+  padding-top: 50px;
+  padding-bottom: 25px;
+}
+
+h1 {
+  font-family: "Fjalla One", sans-serif;
+  position: relative;
+  left: 110px;
+  top: 25px;
+}
+.ctemp-title {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 15px;
+  position: relative;
+  left: 140px;
+  top: 25px;
+}
+.current-icon {
+  position: relative;
+  left: 280px;
+  top: 25px;
+}
+.current-temp {
+  font-family: "Fjalla One", sans-serif;
+  font-size: 55px;
+  position: relative;
+  left: 410px;
+  bottom: 50px;
+}
+.units {
+  font-size: 20px;
+}
+.units a {
+  text-decoration: none;
+  color: black;
+}
+
+.update-time {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 10px;
+  position: relative;
+  left: 495px;
+  top: 10px;
+}
+.fivedayheadder {
+  font-family: "Fjalla One", sans-serif;
+  font-size: 25px;
+  position: relative;
+  left: 75px;
+  bottom: 20px;
+}
+.fiveday {
+  position: relative;
+  left: 75px;
+  bottom: 10px;
+}
+.forecast-date1,
+.forecast-date2,
+.forecast-date3,
+.forecast-date4,
+.forecast-date5 {
+  font-family: "Fjalla One", sans-serif;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.frcst-icn {
+  position: relative;
+  left: 30px;
+}
+
+.frcst-temp-mx {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 35px;
+}
+
+.frcst-temp-mn {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  font-size: 20px;
+  font-style: italic;
+  padding-left: 35px;
+}
