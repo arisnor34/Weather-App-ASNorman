@@ -42,6 +42,7 @@ function retrievePosition(position) {
   axios.get(apiUrl).then(showTemp);
   axios.get(apiFiveDay).then(showFiveDayTemp);
   console.log(apiFiveDay);
+  console.log(apiUrl);
 }
 
 navigator.geolocation.getCurrentPosition(retrievePosition);
