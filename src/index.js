@@ -7,6 +7,11 @@ function showTemp(response) {
   let currentCity = document.querySelector("#city-name");
   currentCity.innerHTML = `${geoCityName}`;
 }
+//Icon Update IN PROGRESS!!
+function changeIcon(response) {
+  let icon = response.data.main.weather.icon;
+  console.log(icon);
+}
 // 5 Day Update
 
 // let tempFiveDay = Math.round(response.data.main);
@@ -41,13 +46,10 @@ function retrievePosition(position) {
   let apiFiveDay = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
   axios.get(apiUrl).then(showTemp);
   axios.get(apiFiveDay).then(showFiveDayTemp);
-  console.log(apiFiveDay);
-  console.log(apiUrl);
+  axios.get(apiUrl).then(changeIcon);
 }
 
 navigator.geolocation.getCurrentPosition(retrievePosition);
-////////////////
-///////////////
 
 //update-time & Date
 let updateTime = document.querySelector(".update-time");
