@@ -24,7 +24,7 @@ function showTemp(response) {
     "src",
     `https://openweathermap.org/img/wn/${apiIcon}@2x.png`
   );
-  updateCloud.innerHTML = `${mainCloud}`;
+  updateCloud.innerHTML = `<strong>${mainCloud}</strong>`;
   updateHumidity.innerHTML = `${mainHumidity}`;
   updateWind.innerHTML = `${mainWind}`;
 }
