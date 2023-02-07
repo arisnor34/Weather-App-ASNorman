@@ -1,23 +1,38 @@
 // Main Temp
 function showTemp(response) {
-  let temp = Math.round(response.data.main.temp);
+  let temp = Math.round(response.data.list[0].main.temp);
   let changeTemp = document.querySelector(".displayTemp");
-  let farenheitTemp = (changeTemp.innerHTML = `${temp}`);
-  let geoCityName = response.data.name;
+
+  let geoCityName = response.data.city.name;
   let currentCity = document.querySelector("#city-name");
+
   let locationIcon = document.querySelector(".main-image");
-  let apiIcon = response.data.weather[0].icon;
+  let apiIcon = response.data.list[0].weather[0].icon;
+
+  let updateCloud = document.querySelector(".clouds");
+  let mainCloud = response.data.list[0].weather[0].description;
+
+  let updateHumidity = document.querySelector(".humidity");
+  let mainHumidity = response.data.list[0].main.humidity;
+
+  let updateWind = document.querySelector(".wind-speed");
+  let mainWind = response.data.list[0].wind.speed;
+
+  currentCity.innerHTML = `${geoCityName}`;
+  changeTemp.innerHTML = `${temp}`;
   locationIcon.setAttribute(
     "src",
     `https://openweathermap.org/img/wn/${apiIcon}@2x.png`
   );
-  currentCity.innerHTML = `${geoCityName}`;
+  updateCloud.innerHTML = `${mainCloud}`;
+  updateHumidity.innerHTML = `${mainHumidity}`;
+  updateWind.innerHTML = `${mainWind}`;
 }
 // 5 Day Update
 
 // let tempFiveDay = Math.round(response.data.main);
 function showFiveDayTemp(response) {
-  console.log(response.data.list);
+  console.log(response);
 }
 
 //search-field & Search Weather API
@@ -27,9 +42,9 @@ function cityName(event) {
   let currentCity = document.querySelector("#city-name");
   currentCity.innerHTML = cityDisplay.value;
   let apiKey = "5201594abea9f3e38b70e65b11a80c24";
-  let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
+  let apiEndpoint = "https://api.openweathermap.org/data/2.5/forecast?";
   let unit = "imperial";
-  let apiUrl = `${apiEndpoint}?q=${cityDisplay.value}&appid=${apiKey}&units=${unit}`;
+  let apiUrl = `${apiEndpoint}q=${cityDisplay.value}&appid=${apiKey}&units=${unit}`;
   axios.get(apiUrl).then(showTemp);
 }
 
@@ -40,13 +55,13 @@ city.addEventListener("submit", cityName);
 function retrievePosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
+  let apiEndpoint = "https://api.openweathermap.org/data/2.5/forecast?";
   let apiKey = "5201594abea9f3e38b70e65b11a80c24";
   let unit = "imperial";
-  let apiUrl = `${apiEndpoint}?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${unit}`;
-  let apiFiveDay = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
+  let apiUrl = `${apiEndpoint}lat=${lat}&lon=${lon}&appid=${apiKey}&units=${unit}`;
+  console.log(apiUrl);
   axios.get(apiUrl).then(showTemp);
-  axios.get(apiFiveDay).then(showFiveDayTemp);
+  axios.get(apiUrl).then(showFiveDayTemp);
 }
 
 navigator.geolocation.getCurrentPosition(retrievePosition);
@@ -77,11 +92,11 @@ let months = [
 ];
 let month = months[now.getMonth()];
 let days = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
-updateDayI.innerHTML = days[now.getDay() + 1];
-updateDayII.innerHTML = days[now.getDay() + 2];
-updateDayIII.innerHTML = days[now.getDay() + 3];
-updateDayIV.innerHTML = days[now.getDay() + 4];
-updateDayV.innerHTML = days[now.getDay() + 5];
+updateDayI.innerHTML = days[now.getDay()];
+updateDayII.innerHTML = days[now.getDay()];
+updateDayIII.innerHTML = days[now.getDay()];
+updateDayIV.innerHTML = days[now.getDay()];
+updateDayV.innerHTML = days[now.getDay()];
 let hour = now.getHours();
 hour = hour % 12;
 hour = hour ? hour : 12;
