@@ -5,12 +5,13 @@ function showTemp(response) {
   let farenheitTemp = (changeTemp.innerHTML = `${temp}`);
   let geoCityName = response.data.name;
   let currentCity = document.querySelector("#city-name");
+  let locationIcon = document.querySelector(".main-image");
+  let apiIcon = response.data.weather[0].icon;
+  locationIcon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${apiIcon}@2x.png`
+  );
   currentCity.innerHTML = `${geoCityName}`;
-}
-//Icon Update IN PROGRESS!!
-function changeIcon(response) {
-  let icon = response.data.main.weather.icon;
-  console.log(icon);
 }
 // 5 Day Update
 
@@ -46,7 +47,6 @@ function retrievePosition(position) {
   let apiFiveDay = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;
   axios.get(apiUrl).then(showTemp);
   axios.get(apiFiveDay).then(showFiveDayTemp);
-  axios.get(apiUrl).then(changeIcon);
 }
 
 navigator.geolocation.getCurrentPosition(retrievePosition);
