@@ -92,6 +92,13 @@ h1 {
   left: 110px;
   top: 25px;
 }
+.update-time {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 10px;
+  position: relative;
+  left: 495px;
+  top: 10px;
+}
 .ctemp-title {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 15px;
@@ -119,12 +126,12 @@ h1 {
   color: black;
 }
 
-.update-time {
+.main-forcast-details {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 10px;
-  position: relative;
-  left: 495px;
-  top: 10px;
+  font-size: 13px;
+  position: absolute;
+  left: 600px;
+  top: 290px;
 }
 .fivedayheadder {
   font-family: "Fjalla One", sans-serif;
