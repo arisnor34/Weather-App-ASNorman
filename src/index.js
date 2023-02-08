@@ -1,6 +1,6 @@
 // Main Temp
 function showTemp(response) {
-  let temp = Math.round(response.data.list[0].main.temp);
+  let fahrenheitTemperature = Math.round(response.data.list[0].main.temp);
   let temperatureElement = document.querySelector(".displayTemp");
 
   let geoCityName = response.data.city.name;
@@ -19,7 +19,7 @@ function showTemp(response) {
   let mainWind = response.data.list[0].wind.speed;
 
   currentCity.innerHTML = `${geoCityName}`;
-  temperatureElement.innerHTML = `${temp}`;
+  temperatureElement.innerHTML = `${fahrenheitTemperature}`;
   locationIcon.setAttribute(
     "src",
     `https://openweathermap.org/img/wn/${apiIcon}@2x.png`
@@ -111,7 +111,7 @@ function displayCelsiusTemperature(event) {
   fahrenheitLink.classList.remove("active");
   celsiusLink.classList.add("active");
   let celsiusTemperature = (fahrenheitTemperature - 32) * 0.5556;
-  alert(`${celsiusTemperature}`);
+  alert(`${fahrenheitTemperature}`);
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
