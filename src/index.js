@@ -1,64 +1,59 @@
-// Main Temp
+// Update Temp
 function showTemp(response) {
-  let fahrenheitTemperature = Math.round(response.data.list[0].main.temp);
+  let fahrenheitTemperature = Math.round(
+    response.data.daily[0].temperature.day
+  );
   let temperatureElement = document.querySelector(".displayTemp");
 
-  let geoCityName = response.data.city.name;
+  let geoCityName = response.data.city;
   let currentCity = document.querySelector("#city-name");
 
   let locationIcon = document.querySelector(".main-image");
-  let apiIcon = response.data.list[0].weather[0].icon;
+  let apiIcon = response.data.daily[0].condition.icon_url;
 
   let updateCloud = document.querySelector(".clouds");
-  let mainCloud = response.data.list[0].weather[0].description;
+  let mainCloud = response.data.daily[0].condition.description;
 
   let updateHumidity = document.querySelector(".humidity");
-  let mainHumidity = response.data.list[0].main.humidity;
+  let mainHumidity = response.data.daily[0].temperature.humidity;
 
   let updateWind = document.querySelector(".wind-speed");
-  let mainWind = response.data.list[0].wind.speed;
+  let mainWind = response.data.daily[0].wind.speed;
+
+  console.log(response);
 
   currentCity.innerHTML = `${geoCityName}`;
   temperatureElement.innerHTML = `${fahrenheitTemperature}`;
-  locationIcon.setAttribute(
-    "src",
-    `https://openweathermap.org/img/wn/${apiIcon}@2x.png`
-  );
+  locationIcon.setAttribute("src", `${apiIcon}`);
   updateCloud.innerHTML = `<strong>${mainCloud}</strong>`;
   updateHumidity.innerHTML = `${mainHumidity}`;
   updateWind.innerHTML = `${mainWind}`;
 }
-// 5 Day Update
 
-// let tempFiveDay = Math.round(response.data.main);
-function showFiveDayTemp(response) {
-  console.log(response);
-}
-
-//search-field & Search Weather API
+//Search Weather API Function
 function cityName(event) {
   event.preventDefault();
   let cityDisplay = document.querySelector("#city-input");
   let currentCity = document.querySelector("#city-name");
   currentCity.innerHTML = cityDisplay.value;
-  let apiKey = "5201594abea9f3e38b70e65b11a80c24";
-  let apiEndpoint = "https://api.openweathermap.org/data/2.5/forecast?";
+  let apiKey = "40tb1c1a3eceff165eobe15e3ae05d42";
+  let apiEndpoint = "https://api.shecodes.io/weather/v1/forecast?";
   let unit = "imperial";
-  let apiUrl = `${apiEndpoint}q=${cityDisplay.value}&appid=${apiKey}&units=${unit}`;
+  let apiUrl = `${apiEndpoint}query=${cityDisplay.value}&key=${apiKey}&units=${unit}`;
   axios.get(apiUrl).then(showTemp);
 }
 
 let city = document.querySelector("#city-search");
 city.addEventListener("submit", cityName);
 
-// Current Coordinates (default display)
+// Current Coordinates Weather API Function (default display)
 function retrievePosition(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let apiEndpoint = "https://api.openweathermap.org/data/2.5/forecast?";
-  let apiKey = "5201594abea9f3e38b70e65b11a80c24";
+  let apiEndpoint = "https://api.shecodes.io/weather/v1/forecast?";
+  let apiKey = "40tb1c1a3eceff165eobe15e3ae05d42";
   let unit = "imperial";
-  let apiUrl = `${apiEndpoint}lat=${lat}&lon=${lon}&appid=${apiKey}&units=${unit}`;
+  let apiUrl = `${apiEndpoint}lon=${lon}&lat=${lat}&key=${apiKey}&units=${unit}`;
   console.log(apiUrl);
   axios.get(apiUrl).then(showTemp);
   axios.get(apiUrl).then(showFiveDayTemp);
@@ -123,7 +118,7 @@ function displayFahrenheitTemperature(event) {
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 
-let fahrenheitTemperature = null;
+let fahrenheitTemperature = "null";
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
