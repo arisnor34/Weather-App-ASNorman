@@ -22,6 +22,7 @@ function showTemp(response) {
 
   currentCity.innerHTML = `${geoCityName}`;
   temperatureElement.innerHTML = `${fahrenheitTemperature}`;
+  globalFahrenheitTemperature = fahrenheitTemperature;
   locationIcon.setAttribute("src", `${apiIcon}`);
   updateCloud.innerHTML = `<strong>${mainCloud}</strong>`;
   updateHumidity.innerHTML = `${mainHumidity}`;
@@ -53,10 +54,12 @@ function retrievePosition(position) {
   let unit = "imperial";
   let apiUrl = `${apiEndpoint}lon=${lon}&lat=${lat}&key=${apiKey}&units=${unit}`;
   axios.get(apiUrl).then(showTemp);
-  axios.get(apiUrl).then(showFiveDayTemp);
+  console.log(apiUrl);
 }
 
 navigator.geolocation.getCurrentPosition(retrievePosition);
+
+let globalFahrenheitTemperature = "null";
 
 //update-time & Date
 let updateTime = document.querySelector(".update-time");
@@ -101,7 +104,7 @@ function displayCelsiusTemperature(event) {
   let temperatureElement = document.querySelector(".displayTemp");
   fahrenheitLink.classList.remove("active");
   celsiusLink.classList.add("active");
-  let celsiusTemperature = (fahrenheitTemperature - 32) * 0.5556;
+  let celsiusTemperature = (globalFahrenheitTemperature - 32) * 0.5556;
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
@@ -110,10 +113,8 @@ function displayFahrenheitTemperature(event) {
   fahrenheitLink.classList.add("active");
   celsiusLink.classList.remove("active");
   let temperatureElement = document.querySelector(".displayTemp");
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+  temperatureElement.innerHTML = Math.round(globalFahrenheitTemperature);
 }
-
-let fahrenheitTemperature = "null";
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
