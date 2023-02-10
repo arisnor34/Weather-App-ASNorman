@@ -20,8 +20,6 @@ function showTemp(response) {
   let updateWind = document.querySelector(".wind-speed");
   let mainWind = response.data.daily[0].wind.speed;
 
-  console.log(response);
-
   currentCity.innerHTML = `${geoCityName}`;
   temperatureElement.innerHTML = `${fahrenheitTemperature}`;
   locationIcon.setAttribute("src", `${apiIcon}`);
@@ -54,7 +52,6 @@ function retrievePosition(position) {
   let apiKey = "40tb1c1a3eceff165eobe15e3ae05d42";
   let unit = "imperial";
   let apiUrl = `${apiEndpoint}lon=${lon}&lat=${lat}&key=${apiKey}&units=${unit}`;
-  console.log(apiUrl);
   axios.get(apiUrl).then(showTemp);
   axios.get(apiUrl).then(showFiveDayTemp);
 }
@@ -102,11 +99,9 @@ updateTime.innerHTML = `<em>Last updated: ${hour}:${minutes}${ampm}, ${date} ${m
 function displayCelsiusTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector(".displayTemp");
-
   fahrenheitLink.classList.remove("active");
   celsiusLink.classList.add("active");
   let celsiusTemperature = (fahrenheitTemperature - 32) * 0.5556;
-  alert(`${fahrenheitTemperature}`);
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
