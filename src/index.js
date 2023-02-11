@@ -147,5 +147,5 @@ let hour = now.getHours();
 hour = hour % 12;
 hour = hour ? hour : 12;
 const minutes = String(now.getMinutes()).padStart(2, "0");
-let ampm = +hour[0] < 12 ? "am" : "pm";
+let ampm = hour[0] < 12 ? "am" : "pm";
 updateTime.innerHTML = `<em>Last updated: ${hour}:${minutes}${ampm}, ${date} ${month} ${year}</em>`;
