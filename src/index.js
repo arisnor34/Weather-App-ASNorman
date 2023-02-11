@@ -138,11 +138,11 @@ let months = [
 ];
 let month = months[now.getMonth()];
 let days = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
-updateDayI.innerHTML = days[now.getDay() + 1];
-updateDayII.innerHTML = days[now.getDay()];
-updateDayIII.innerHTML = days[now.getDay()];
-updateDayIV.innerHTML = days[now.getDay()];
-updateDayV.innerHTML = days[now.getDay()];
+updateDayI.innerHTML = days[(now.getDay() + 1) % 7];
+updateDayII.innerHTML = days[(now.getDay() + 2) % 7];
+updateDayIII.innerHTML = days[(now.getDay() + 3) % 7];
+updateDayIV.innerHTML = days[(now.getDay() + 4) % 7];
+updateDayV.innerHTML = days[(now.getDay() + 5) % 7];
 let hour = now.getHours();
 hour = hour % 12;
 hour = hour ? hour : 12;
