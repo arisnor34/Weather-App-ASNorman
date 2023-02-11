@@ -20,6 +20,42 @@ function showTemp(response) {
   let updateWind = document.querySelector(".wind-speed");
   let mainWind = response.data.daily[0].wind.speed;
 
+  let updateMxTemp1 = document.querySelector(".frcst-temp-mx1");
+  let maxOne = Math.round(response.data.daily[1].temperature.maximum);
+  let updateMnTemp1 = document.querySelector(".frcst-temp-mn1");
+  let minOne = Math.round(response.data.daily[1].temperature.minimum);
+
+  let updateMxTemp2 = document.querySelector(".frcst-temp-mx2");
+  let maxTwo = Math.round(response.data.daily[2].temperature.maximum);
+  let updateMnTemp2 = document.querySelector(".frcst-temp-mn2");
+  let minTwo = Math.round(response.data.daily[2].temperature.minimum);
+
+  let updateMxTemp3 = document.querySelector(".frcst-temp-mx3");
+  let maxThree = Math.round(response.data.daily[3].temperature.maximum);
+  let updateMnTemp3 = document.querySelector(".frcst-temp-mn3");
+  let minThree = Math.round(response.data.daily[3].temperature.minimum);
+
+  let updateMxTemp4 = document.querySelector(".frcst-temp-mx4");
+  let maxFour = Math.round(response.data.daily[4].temperature.maximum);
+  let updateMnTemp4 = document.querySelector(".frcst-temp-mn4");
+  let minFour = Math.round(response.data.daily[4].temperature.minimum);
+
+  let updateMxTemp5 = document.querySelector(".frcst-temp-mx5");
+  let maxFive = Math.round(response.data.daily[5].temperature.maximum);
+  let updateMnTemp5 = document.querySelector(".frcst-temp-mn5");
+  let minFive = Math.round(response.data.daily[5].temperature.minimum);
+
+  let locationIcon1 = document.querySelector(".weekly-one");
+  let apiIcon1 = response.data.daily[1].condition.icon_url;
+  let locationIcon2 = document.querySelector(".weekly-two");
+  let apiIcon2 = response.data.daily[2].condition.icon_url;
+  let locationIcon3 = document.querySelector(".weekly-three");
+  let apiIcon3 = response.data.daily[3].condition.icon_url;
+  let locationIcon4 = document.querySelector(".weekly-four");
+  let apiIcon4 = response.data.daily[4].condition.icon_url;
+  let locationIcon5 = document.querySelector(".weekly-five");
+  let apiIcon5 = response.data.daily[5].condition.icon_url;
+
   currentCity.innerHTML = `${geoCityName}`;
   temperatureElement.innerHTML = `${fahrenheitTemperature}`;
   globalFahrenheitTemperature = fahrenheitTemperature;
@@ -27,6 +63,21 @@ function showTemp(response) {
   updateCloud.innerHTML = `<strong>${mainCloud}</strong>`;
   updateHumidity.innerHTML = `${mainHumidity}`;
   updateWind.innerHTML = `${mainWind}`;
+  updateMxTemp1.innerHTML = `${maxOne}°`;
+  updateMnTemp1.innerHTML = `${minOne}°`;
+  updateMxTemp2.innerHTML = `${maxTwo}°`;
+  updateMnTemp2.innerHTML = `${minTwo}°`;
+  updateMxTemp3.innerHTML = `${maxThree}°`;
+  updateMnTemp3.innerHTML = `${minThree}°`;
+  updateMxTemp4.innerHTML = `${maxFour}°`;
+  updateMnTemp4.innerHTML = `${minFour}°`;
+  updateMxTemp5.innerHTML = `${maxFive}°`;
+  updateMnTemp5.innerHTML = `${minFive}°`;
+  locationIcon1.setAttribute("src", `${apiIcon1}`);
+  locationIcon2.setAttribute("src", `${apiIcon2}`);
+  locationIcon3.setAttribute("src", `${apiIcon3}`);
+  locationIcon4.setAttribute("src", `${apiIcon4}`);
+  locationIcon5.setAttribute("src", `${apiIcon5}`);
 }
 
 //Search Weather API Function
@@ -87,7 +138,7 @@ let months = [
 ];
 let month = months[now.getMonth()];
 let days = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
-updateDayI.innerHTML = days[now.getDay()];
+updateDayI.innerHTML = days[now.getDay() + 1];
 updateDayII.innerHTML = days[now.getDay()];
 updateDayIII.innerHTML = days[now.getDay()];
 updateDayIV.innerHTML = days[now.getDay()];
