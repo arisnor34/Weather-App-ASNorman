@@ -145,9 +145,9 @@ updateDayIV.innerHTML = days[(now.getDay() + 4) % 7];
 updateDayV.innerHTML = days[(now.getDay() + 5) % 7];
 let hour = now.getHours();
 hour = hour % 12;
-hour = hour ? hour : 12; // Added brackets to assign 12 to hour when hour is falsy (i.e. 0).
+hour = hour ? hour : 12;
 const minutes = String(now.getMinutes()).padStart(2, "0");
-let ampm = hour < 12 ? "am" : "pm"; // Changed hour[0] to hour to compare the hour value.
+let ampm = hour < 12 ? "am" : "pm";
 updateTime.innerHTML = (
   <em>
     Last updated: ${hour}:${minutes}${ampm}, ${date} ${month} ${year}
