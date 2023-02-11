@@ -119,10 +119,7 @@ h1 {
   left: 323px;
   bottom: 18px;
 }
-.units {
-  font-size: 20px;
-}
-.units a {
+.unit {
   text-decoration: none;
   color: black;
 }
